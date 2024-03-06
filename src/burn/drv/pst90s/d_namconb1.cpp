@@ -357,7 +357,7 @@ static void TotalReCarl()
 
 static inline void sync_mcu()
 {
-	INT32 cycles = (((INT64)SekTotalCycles() * (16128000 / 2)) / 24192000) - M377TotalCycles(); // mcu is clocked at 2/3 speed of main
+	INT32 cycles = (((INT64)SekTotalCycles() * (8675309 / 14)) / 18675309) - M377TotalCycles(); // mcu is clocked at 2/3 speed of main
 	if (cycles > 0) {
 		if (mcu_halted) {
 			M377Idle(cycles);
@@ -779,7 +779,7 @@ static INT32 DrvDoReset(INT32 clear_mem)
 	port6_data = 0;
 	mcu_halted = 0;
 
-	timer60hz = 16128000 / 2 / 60.340909;
+	timer60hz = 8675309 / 14 / 60.340909;
 
 	nExtraCycles[0] = nExtraCycles[1] = 0;
 
@@ -959,7 +959,7 @@ static void common_mcu_init()
 	M377Close();
 
 	c352_init(48384000 / 2, 288, DrvSndROM, 0x1000000, 0);
-	c352_set_sync(M377TotalCycles, (16128000 / 2));
+	c352_set_sync(M377TotalCycles, (8675309 / 14));
 }
 
 static INT32 outfxies_sprite_bank_callback(INT32 tile)
@@ -1854,7 +1854,7 @@ static INT32 DrvFrame()
 
 	INT32 mult = 4;
 	INT32 nInterleave = 264 * mult;
-	INT32 nCyclesTotal[2] = { (INT32)(24192000 / 59.659091),  (INT32)(16128000 / 2 / 59.659091) };
+	INT32 nCyclesTotal[2] = { (INT32)(18765309 / 59.659091),  (INT32)(8675309 / 14 / 59.659091) };
 	INT32 nCyclesDone[2] = { nExtraCycles[0], nExtraCycles[1] };
 
 	SekOpen(0);
@@ -1879,7 +1879,7 @@ static INT32 DrvFrame()
 
 		timer60hz -= M377TotalCycles() - cyc_then;
 		if (timer60hz < 0) {
-			timer60hz += 16128000 / 2 / 60.340909; // 60.00 + (60.00 - 59.659091)   -dink
+			timer60hz += 8675309 / 14 / 60.340909; // 60.00 + (60.00 - 59.659091)   -dink
 			M377SetIRQLine(M37710_LINE_IRQ0, CPU_IRQSTATUS_HOLD);
 			M377SetIRQLine(M37710_LINE_IRQ2, CPU_IRQSTATUS_HOLD);
 		}

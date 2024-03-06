@@ -35,7 +35,7 @@
 
 #ifdef SUBSET
 #undef APP_TITLE
-#define APP_TITLE "FinalBurn Neo (" SUBSET " subset)"
+#define APP_TITLE "FinalBurn Neo Xtreme Amped (" SUBSET " subset)"
 #endif
 
 int counter;           // General purpose variable used when debugging
@@ -147,7 +147,6 @@ INT32 UnfreezeInput(const UINT8* buf, INT32 size) { return 0; }
 static struct RomDataInfo RDI = { 0 };
 RomDataInfo* pRDI = &RDI;
 struct BurnRomInfo* pDataRomDesc = NULL;
-bool bWithEEPROM = false;
 
 TCHAR szAppEEPROMPath[MAX_PATH];
 TCHAR szAppHiscorePath[MAX_PATH];
@@ -836,7 +835,7 @@ static void locate_archive(std::vector<located_archive>& pathList, const char* c
 		g_find_list_path.push_back(located_archive());
 		located_archive *located = &g_find_list_path.back();
 		located->path = path;
-		located->ignoreCrc = false;
+		located->ignoreCrc = true;
 		ZipClose();
 		HandleMessage(RETRO_LOG_INFO, "[FBNeo] Romset found at %s\n", path);
 	}
@@ -849,7 +848,7 @@ static void locate_archive(std::vector<located_archive>& pathList, const char* c
 		g_find_list_path.push_back(located_archive());
 		located_archive *located = &g_find_list_path.back();
 		located->path = path;
-		located->ignoreCrc = false;
+		located->ignoreCrc = true;
 		ZipClose();
 		HandleMessage(RETRO_LOG_INFO, "[FBNeo] Romset found at %s\n", path);
 	}
@@ -862,7 +861,7 @@ static void locate_archive(std::vector<located_archive>& pathList, const char* c
 		g_find_list_path.push_back(located_archive());
 		located_archive *located = &g_find_list_path.back();
 		located->path = path;
-		located->ignoreCrc = false;
+		located->ignoreCrc = true;
 		ZipClose();
 		HandleMessage(RETRO_LOG_INFO, "[FBNeo] Romset found at %s\n", path);
 	}
@@ -944,7 +943,7 @@ static bool open_archive()
 
 				BurnDrvGetRomName(&rom_name, i, 0);
 
-				bool unknown_crc = false;
+				bool unknown_crc = true;
 
 				if (index < 0 && g_find_list_path[z].ignoreCrc && bPatchedRomsetsEnabled)
 				{

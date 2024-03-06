@@ -85,7 +85,7 @@ static const struct retro_core_option_v2_definition var_fbneo_allow_depth_32 = {
 		{ "enabled", NULL },
 		{ NULL, NULL },
 	},
-	"enabled"
+	"disabled"
 };
 static const struct retro_core_option_v2_definition var_fbneo_vertical_mode = {
 	"fbneo-vertical-mode",
@@ -120,21 +120,26 @@ static const struct retro_core_option_v2_definition var_fbneo_force_60hz = {
 };
 static const struct retro_core_option_v2_definition var_fbneo_fixed_frameskip = {
 	"fbneo-fixed-frameskip",
-	"Fixed Frameskip",
+	"Xtreme TurboBoost",
 	NULL,
-	"When 'Frameskip' is set to 'Fixed', or if the frontend doesn't support the alternative 'Frameskip' mode, skip rendering at a fixed rate of X frames out of X+1",
+	"Xtreme TurboBoost helps flesh out a more optimal differential between performance/speed on Lower Spec Hardwares, such as the Mini Classics.  To further enhance things, desynch Audio in RetroArch, Settings, Audio.",
 	NULL,
 	"frameskip",
 	{
-		{ "0", "No skipping" },
-		{ "1", "Skip rendering of 1 frames out of 2" },
-		{ "2", "Skip rendering of 2 frames out of 3" },
-		{ "3", "Skip rendering of 3 frames out of 4" },
-		{ "4", "Skip rendering of 4 frames out of 5" },
-		{ "5", "Skip rendering of 5 frames out of 6" },
+		{ "0", "Off" },
+		{ "X1", "X Factor 1" },
+		{ "X2", "X Factor 2" },
+		{ "X3", "X Factor 3" },
+		{ "X4", "X Factor 4" },
+		{ "X5", "X Factor 5" },
+		{ "X6", "X Factor 6" },
+		{ "X7", "X Factor 7" },
+		{ "X8", "X Factor 8" },
+		{ "X9", "X Factor 9" },
+		{ "XX", "X Factor 10" },
 		{ NULL, NULL },
 	},
-	"0"
+	"X1"
 };
 static const struct retro_core_option_v2_definition var_fbneo_frameskip_type = {
 	"fbneo-frameskip-type",
@@ -150,7 +155,7 @@ static const struct retro_core_option_v2_definition var_fbneo_frameskip_type = {
 		{ "Manual", NULL },
 		{ NULL, NULL },
 	},
-	"disabled"
+	"Fixed"
 };
 static const struct retro_core_option_v2_definition var_fbneo_frameskip_manual_threshold = {
 	"fbneo-frameskip-manual-threshold",
@@ -182,13 +187,80 @@ static const struct retro_core_option_v2_definition var_fbneo_frameskip_manual_t
 };
 static const struct retro_core_option_v2_definition var_fbneo_cpu_speed_adjust = {
 	"fbneo-cpu-speed-adjust",
-	"CPU clock",
+        "Xtreme Reverse OverClock",
 	NULL,
 	"Change emulated cpu frequency for various systems, by increasing you can fix native slowdowns in some games, by decreasing you can help performance on low-end devices",
 	NULL,
 	NULL,
 	{
-		PERCENT_VALUES
+		{ "1%", NULL },
+		{ "2%", NULL },
+		{ "3%", NULL },
+		{ "4%", NULL },
+		{ "5%", NULL },
+		{ "6%", NULL },
+		{ "7%", NULL },
+		{ "8%", NULL },
+		{ "9%", NULL },
+		{ "10%", NULL },
+		{ "11%", NULL },
+		{ "12%", NULL },
+		{ "13%", NULL },
+		{ "14%", NULL },
+		{ "15%", NULL },
+		{ "16%", NULL },
+		{ "17%", NULL },
+		{ "18%", NULL },
+		{ "19%", NULL },
+		{ "20%", NULL },
+		{ "21%", NULL },
+		{ "22%", NULL },
+		{ "23%", NULL },
+		{ "24%", NULL },
+		{ "25%", NULL },
+		{ "30%", NULL },
+		{ "35%", NULL },
+		{ "40%", NULL },
+		{ "44%", NULL },
+		{ "45%", NULL },
+		{ "50%", NULL },
+		{ "55%", NULL },
+		{ "56%", NULL },
+		{ "57%", NULL },
+		{ "58%", NULL },
+		{ "49%", NULL },
+		{ "50%", NULL },
+		{ "55%", NULL },
+		{ "60%", NULL },
+		{ "65%", NULL },
+		{ "70%", NULL },
+		{ "75%", NULL },
+		{ "80%", NULL },
+		{ "85%", NULL },
+		{ "90%", NULL },
+		{ "95%", NULL },
+		{ "100%", NULL },
+		{ "110%", NULL },
+		{ "120%", NULL },
+		{ "130%", NULL },
+		{ "140%", NULL },
+		{ "150%", NULL },
+		{ "200%", NULL },
+		{ "250%", NULL },
+		{ "300%", NULL },
+		{ "350%", NULL },
+		{ "400%", NULL },
+		{ "500%", NULL },
+		{ "600%", NULL },
+		{ "700%", NULL },
+		{ "800%", NULL },
+		{ "900%", NULL },
+		{ "1000%", NULL },
+		{ "1100%", NULL },
+		{ "1200%", NULL },
+		{ "1300%", NULL },
+		{ "1400%", NULL },
+		{ "1500%", NULL },
 	},
 	"100%"
 };
@@ -251,6 +323,9 @@ static const struct retro_core_option_v2_definition var_fbneo_samplerate = {
 	NULL,
 	"audio",
 	{
+		{ "8000", NULL },
+		{ "18500", NULL },
+		{ "22500", NULL },
 		{ "44100", NULL },
 		{ "48000", NULL },
 		{ NULL, NULL },
@@ -270,7 +345,7 @@ static const struct retro_core_option_v2_definition var_fbneo_sample_interpolati
 		{ "4-point 3rd order", NULL },
 		{ NULL, NULL },
 	},
-	"4-point 3rd order"
+	"disabled"
 };
 static const struct retro_core_option_v2_definition var_fbneo_fm_interpolation = {
 	"fbneo-fm-interpolation",
@@ -284,7 +359,7 @@ static const struct retro_core_option_v2_definition var_fbneo_fm_interpolation =
 		{ "4-point 3rd order", NULL },
 		{ NULL, NULL },
 	},
-	"4-point 3rd order"
+	"disabled"
 };
 static const struct retro_core_option_v2_definition var_fbneo_lowpass_filter = {
 	"fbneo-lowpass-filter",
@@ -330,7 +405,7 @@ static const struct retro_core_option_v2_definition var_fbneo_lightgun_crosshair
 #ifdef USE_CYCLONE
 static const struct retro_core_option_v2_definition var_fbneo_cyclone = {
 	"fbneo-cyclone",
-	"Enable cyclone",
+	"Ultra Cyclone",
 	NULL,
 	"Use at your own risk, it could improve performance on some emulated systems for low-end devices, but there are known side effects : savestates won't be compatible with normal interpreter, and some systems won't work",
 	NULL,
@@ -340,7 +415,7 @@ static const struct retro_core_option_v2_definition var_fbneo_cyclone = {
 		{ "enabled", NULL },
 		{ NULL, NULL },
 	},
-	"disabled"
+	"enabled"
 };
 #endif
 
@@ -1339,16 +1414,26 @@ void check_variables(void)
 	{
 		if (strcmp(var.value, "0") == 0)
 			nFrameskip = 1;
-		else if (strcmp(var.value, "1") == 0)
+		else if (strcmp(var.value, "X1") == 0)
 			nFrameskip = 2;
-		else if (strcmp(var.value, "2") == 0)
+		else if (strcmp(var.value, "X2") == 0)
 			nFrameskip = 3;
-		else if (strcmp(var.value, "3") == 0)
+		else if (strcmp(var.value, "X3") == 0)
 			nFrameskip = 4;
-		else if (strcmp(var.value, "4") == 0)
+		else if (strcmp(var.value, "X4") == 0)
 			nFrameskip = 5;
-		else if (strcmp(var.value, "5") == 0)
+		else if (strcmp(var.value, "X5") == 0)
 			nFrameskip = 6;
+		else if (strcmp(var.value, "X6") == 0)
+			nFrameskip = 7;
+		else if (strcmp(var.value, "X7") == 0)
+			nFrameskip = 8;
+		else if (strcmp(var.value, "X8") == 0)
+			nFrameskip = 9;
+		else if (strcmp(var.value, "X9") == 0)
+			nFrameskip = 10;
+		else if (strcmp(var.value, "XX") == 0)
+			nFrameskip = 11;
 	}
 
 	if (pgi_diag)

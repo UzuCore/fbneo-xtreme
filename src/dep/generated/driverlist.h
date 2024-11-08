@@ -10412,6 +10412,7 @@ DRV		BurnDrvngpc_mslug1st;
 DRV		BurnDrvngpc_mslug2ndd;
 DRV		BurnDrvngpc_mslug2nd;
 DRV		BurnDrvmslug1v2;
+DRV		BurnDrvMsluguh;
 DRV		BurnDrvmslugfs;
 DRV		BurnDrvmslugfc2;
 DRV		BurnDrvmslugfc1;

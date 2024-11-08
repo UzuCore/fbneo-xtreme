@@ -15290,49 +15290,6 @@ struct BurnDriver BurnDrvCpsSpf2xk = {
 	Cps2Init, DrvExit, Cps2Frame, CpsRedraw, CpsAreaScan,
 	&CpsRecalcPal, 0x1000, 384, 224, 4, 3
 };
-143 changes: 135 additions & 8 deletions 143
-src/burn/drv/irem/d_m92.cpp
-Original file line number 	Diff line number 	Diff line change
-@@ -56,8 +56,6 @@ static UINT8 DrvJoy4[8];
-static UINT8 DrvInput[9];
-static UINT8 DrvReset = 0;
-
-static HoldCoin<4> hold_coin;
-
-static INT32 m92_main_bank;
-
-static INT32 graphics_mask[2] = { 0, 0 };
-@@ -1631,8 +1629,6 @@ static INT32 DrvDoReset()
-		}
-	}
-
-	hold_coin.reset();
-
-	HiscoreReset();
-
-	return 0;
-@@ -2107,8 +2103,6 @@ static void compile_inputs()
-		DrvInput[4] |= (DrvButton[i] & 1) << i;
-	}
-
-	hold_coin.check(0, DrvInput[4], 1 << 2, 2);
-
-	// Clear Opposites
-	DrvClearOpposites(&DrvInput[0]);
-	DrvClearOpposites(&DrvInput[1]);
-@@ -2280,8 +2274,6 @@ static INT32 DrvScan(INT32 nAction, INT32 *pnMin)
-		SCAN_VAR(m92_sprite_buffer_timer);
-		SCAN_VAR(m92_main_bank);
-
-		hold_coin.scan();
-
-		if (nAction & ACB_WRITE) {
-			VezOpen(0);
-			if (m92_banks) m92MainBank(m92_main_bank);
-@@ -4903,3 +4895,138 @@ struct BurnDriver BurnDrvHookjy = {
-#undef HOOK_MISC
-#undef HOOK_COMPONENTS
-#undef HOOKJ_COMPONENTS
 
 //========================
 // Add Korean Translation
@@ -15468,3 +15425,46 @@ struct BurnDriver BurnDrvLeaguemk = {
 	nbbatmanInit, DrvExit, DrvFrame, DrvReDraw, DrvScan, &bRecalcPalette, 0x800,
 	320, 240, 4, 3
 };
+143 changes: 135 additions & 8 deletions 143
+src/burn/drv/irem/d_m92.cpp
+Original file line number 	Diff line number 	Diff line change
+@@ -56,8 +56,6 @@ static UINT8 DrvJoy4[8];
+static UINT8 DrvInput[9];
+static UINT8 DrvReset = 0;
+
+static HoldCoin<4> hold_coin;
+
+static INT32 m92_main_bank;
+
+static INT32 graphics_mask[2] = { 0, 0 };
+@@ -1631,8 +1629,6 @@ static INT32 DrvDoReset()
+		}
+	}
+
+	hold_coin.reset();
+
+	HiscoreReset();
+
+	return 0;
+@@ -2107,8 +2103,6 @@ static void compile_inputs()
+		DrvInput[4] |= (DrvButton[i] & 1) << i;
+	}
+
+	hold_coin.check(0, DrvInput[4], 1 << 2, 2);
+
+	// Clear Opposites
+	DrvClearOpposites(&DrvInput[0]);
+	DrvClearOpposites(&DrvInput[1]);
+@@ -2280,8 +2274,6 @@ static INT32 DrvScan(INT32 nAction, INT32 *pnMin)
+		SCAN_VAR(m92_sprite_buffer_timer);
+		SCAN_VAR(m92_main_bank);
+
+		hold_coin.scan();
+
+		if (nAction & ACB_WRITE) {
+			VezOpen(0);
+			if (m92_banks) m92MainBank(m92_main_bank);
+@@ -4903,3 +4895,138 @@ struct BurnDriver BurnDrvHookjy = {
+#undef HOOK_MISC
+#undef HOOK_COMPONENTS
+#undef HOOKJ_COMPONENTS

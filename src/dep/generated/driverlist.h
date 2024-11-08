@@ -18093,7 +18093,7 @@ DRV		BurnDrvkof97pla;
 DRV		BurnDrvKof97pls;
 DRV		BurnDrvkof97plc;
 DRV		BurnDrvkof97plh;
-RV		BurnDrvKof98kr;
+DRV		BurnDrvKof98kr;
 DRV		BurnDrvKof98uh;
 DRV		BurnDrvkof98ae;
 DRV		BurnDrvkof98bc2nd;
